@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin: 10px;
+    }
+    th, td {
+        padding: 5px;
+        text-align: left; 
+           
+    }
+    #iniciar, #aturar {
+        margin: 10px ;
+        padding: 5px 10px;
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+    }
+</style>
+    <script src="exercici02_3.js"  defer></script>
+    <script src="exercici02_4.js" defer></script>
+</head>
+<!-- 3.Crea un document HTML amb un div amb id “taula_propietats”. Programa amb JS que es creï
+una taula formada per dos columnes. En la primera columna has de mostrar els texts indicats a
+continuació, i en la segona columna els valors corresponents obtinguts dinàmicament amb JS:
+a. Valor máxim que pot tenir un número JS
+b. Altura total de la pantalla
+c. Altura interna de la finestra 
+d. URL de la web 
+
+4.Afegeix al document HTML un compte enrere inicialment a 00minuts i 00segons
+a. Permet que l’usuari pugui establir quants minuts i segons vol que duri.
+b. Permet que l’usuari inicií el compte enrere i el pugui aturar (restablint-lo a 0) i pausar
+c. Quan el compte enrere arribi a 0, avisa amb una música i permet que es pugui aturar.
+-->
+
+<body>
+    <div id ="taula_propietats">
+    
+    </div> 
+    
+    <div id="compte_enrere">    
+        <label for="minuts">Minuts:</label>
+        <input type="number" id="minuts" name="minuts" min="0" value="0">
+        <label for="segons">Segons:</label>
+        <input type="number" id="segons" name="segons" min="0" max="59" value="0">
+        <br><br>
+        <button id="iniciar">Iniciar</button>
+        <button id="aturar">Aturar</button>
+        <h2 id="temps">00:00</h2>
+
+    </div>
+</body>
+</html>
