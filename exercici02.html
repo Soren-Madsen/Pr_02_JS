@@ -67,8 +67,11 @@ c. Quan el compte enrere arribi a 0, avisa amb una música i permet que es pugui
 
 
     <div class="audio-player">
-        <label>Volum:
+        <label for="inp_vol_audio">Volum:
             <input type="range" id="inp_vol_audio" min="0" max="1" step="0.1" value="1">
+        </label>
+        <label for="inp_time_audio">Time:
+            <input type="range" id="inp_time_audio" min="0" max="0" step="0.1">
         </label>
         <br>
         <button id="btn_play">PLAY</button>

@@ -1,5 +1,5 @@
 
-
+let audio_actual = "";
 
 const btn_play = document.getElementById("btn_play");
 const btn_stop = document.getElementById("btn_stop");
@@ -10,8 +10,7 @@ const btn_volume_down = document.getElementById("btn_volume_down");
 const audio = document.getElementById("audioElement");
 const select_music = document.getElementById("select_music");
 const inp_vol_audio = document.getElementById("inp_vol_audio");
-
-let audio_actual = "";
+const inp_time_audio = document.getElementById("inp_time_audio");
 
 btn_play.style.backgroundColor = "orange";
 btn_play.onclick = playMusic;
@@ -21,7 +20,7 @@ btn_volume_up.onclick = volumeUp;
 btn_volume_down.onclick = volumeDown;
 btn_mute.onclick = mute;
 inp_vol_audio.onchange = inp_vol_audio;
-
+inp_time_audio.onchange = inp_time_audio;
 
 
 function playMusic() {
@@ -30,6 +29,16 @@ function playMusic() {
         audio.src = select_music.value;
         audio_actual = select_music.value;
     }
+    audio.oncanplay = function() {
+        inp_time_audio.max = audio.duration;
+        inp_time_audio.value = audio.currentTime;
+        let refIntAudio = window.setInterval(function() {
+            inp_time_audio.value = audio.currentTime;
+            if (audio.currentTime == audio.duration) {
+                window.clearInterval(refIntAudio);
+            }
+        }, 100);
+    };
     audio.play();
 }
 
@@ -54,10 +63,6 @@ function volumeDown() {
         audio.volume -= 0.1;
     }
     inp_vol_audio.value = audio.volume;
-}
-
-function inp_vol_audio() {
-    audio.volume = inp_vol_audio.value;
 }
 
 function mute() {
