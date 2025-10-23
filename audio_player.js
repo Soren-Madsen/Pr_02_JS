@@ -1,4 +1,5 @@
 
+
 let audio_actual = "";
 
 const btn_play = document.getElementById("btn_play");
@@ -19,8 +20,16 @@ btn_pause.onclick = pauseMusic;
 btn_volume_up.onclick = volumeUp;
 btn_volume_down.onclick = volumeDown;
 btn_mute.onclick = mute;
-inp_vol_audio.onchange = inp_vol_audio;
-inp_time_audio.onchange = inp_time_audio;
+if (inp_vol_audio) {
+    inp_vol_audio.addEventListener('input', function() {
+        audio.volume = parseFloat(this.value);
+    });
+}
+if (inp_time_audio) {
+    inp_time_audio.addEventListener('input', function() {
+        audio.currentTime = parseFloat(this.value);
+    });
+}
 
 
 function playMusic() {
@@ -68,3 +77,4 @@ function volumeDown() {
 function mute() {
     audio.muted = !audio.muted;
 }
+

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercici 02</title>
     <style>
         /* CSS para la tabla */
         table,
@@ -19,11 +19,25 @@
         td {
             padding: 5px;
             text-align: left;
+        }
 
+        .audio-player {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        /* CSS para el contador y reloj */
+        #compte_enrere,
+        #alarma {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid black;
         }
 
         #iniciar,
-        #aturar {
+        #aturar,
+        #pausa {
             margin: 10px;
             padding: 5px 10px;
             border: none;
@@ -34,7 +48,11 @@
     <script src="exercici02_3.js" defer></script>
     <script src="exercici02_4.js" defer></script>
     <script src="audio_player.js" defer></script>
+    <script src="exercici02_5.js" defer></script>
+
+
 </head>
+
 <!-- 3.Crea un document HTML amb un div amb id “taula_propietats”. Programa amb JS que es creï
 una taula formada per dos columnes. En la primera columna has de mostrar els texts indicats a
 continuació, i en la segona columna els valors corresponents obtinguts dinàmicament amb JS:
@@ -47,26 +65,20 @@ d. URL de la web
 a. Permet que l’usuari pugui establir quants minuts i segons vol que duri.
 b. Permet que l’usuari inicií el compte enrere i el pugui aturar (restablint-lo a 0) i pausar
 c. Quan el compte enrere arribi a 0, avisa amb una música i permet que es pugui aturar.
+
+5.Afegeix un rellotge que mostri la hora, minuts i segons actuals i s’actualitzi cada segon.
+a. Afegeix la possibilitat d’establir una alarma que avisi en una hora en concret
+b. Al saltar l’alarma aconsegueix que soni una música i que es pugui aturar
+c. L’usuari pot escollir entre diferents músiques
+d. L’usuari pot establir el volum
+e. En qualsevol moment l’usuari pot reproduir i aturar la música de l’alarma
 -->
 
 <body>
     <div id="taula_propietats">
-
     </div>
-
-    <div id="compte_enrere">
-        <label for="minuts">Minuts:</label>
-        <input type="number" id="minuts" name="minuts" min="0" value="0">
-        <label for="segons">Segons:</label>
-        <input type="number" id="segons" name="segons" min="0" max="59" value="0">
-        <br><br>
-        <button id="iniciar">Iniciar</button>
-        <button id="aturar">Aturar</button>
-        <h2 id="temps">00:00</h2>
-    </div>
-
-
     <div class="audio-player">
+        <h3>Reproductor música d'alarma</h3>
         <label for="inp_vol_audio">Volum:
             <input type="range" id="inp_vol_audio" min="0" max="1" step="0.1" value="1">
         </label>
@@ -85,9 +97,28 @@ c. Quan el compte enrere arribi a 0, avisa amb una música i permet que es pugui
             <option value="DRUMC0.WAV" selected>DRUMC0</option>
             <option value="FANFARE1.WAV">FANFARE1</option>
         </select>
-        <audio id="audioElement" preload="metadata"></audio>
-    </div>
 
+        <audio id="audioElement" preload="metadata"></audio>
+        <br>
+        <label for="alarma_hora">Estableix l'alarma (HH:MM:SS):</label>
+        <input type="time" id="alarma_hora" name="alarma_hora" step="1">
+        <br>
+        <button id="set_alarma">Establir Alarma</button>
+        <button id="clear_alarma">Netejar Alarma</button>
+        <h2 id="reloj">00:00:00</h2>
+    </div>
+    <div id="compte_enrere">
+        <h3>Compte enrere</h3>
+        <label for="minuts">Minuts:</label>
+        <input type="number" id="minuts" name="minuts" min="0" value="0">
+        <label for="segons">Segons:</label>
+        <input type="number" id="segons" name="segons" min="0" max="59" value="0">
+        <br><br>
+        <button id="iniciar">Iniciar</button>
+        <button id="pausa">Pausa</button>
+        <button id="aturar">Aturar</button>
+        <h2 id="temps">00:00</h2>
+    </div>
 </body>
 
 </html>
